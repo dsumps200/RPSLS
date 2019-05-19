@@ -11,10 +11,13 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btn_rock, btn_paper, btn_scissors, btn_lizard, btn_spock;
+    Button btn_rock, btn_paper, btn_scissors, btn_lizard, btn_spock, btn_reset;
     ArrayList<String> options = new ArrayList<>();
     String p1Choice, computerChoice;
-    TextView txt_p1Choice, txt_computerChoice, txt_action, txt_winner;
+    TextView txt_p1Choice, txt_computerChoice, txt_action, txt_winner, txt_wins, txt_draws, txt_losses;
+    int wins = 0;
+    int draws = 0;
+    int losses = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +39,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txt_computerChoice = findViewById(R.id.txt_computerChoice);
         txt_action = findViewById(R.id.txt_action);
         txt_winner = findViewById(R.id.txt_winner);
+        txt_wins = findViewById(R.id.txt_wins);
+        txt_draws = findViewById(R.id.txt_draws);
+        txt_losses = findViewById(R.id.txt_losses);
+        btn_reset = findViewById(R.id.btn_reset);
 
         btn_rock.setOnClickListener(this);
         btn_paper.setOnClickListener(this);
         btn_scissors.setOnClickListener(this);
         btn_lizard.setOnClickListener(this);
         btn_spock.setOnClickListener(this);
+        btn_reset.setOnClickListener(this);
+
     }
 
     @Override
@@ -83,6 +92,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 generateComputerChoice();
                 calculateAction();
                 break;
+
+            case R.id.btn_reset:
+                txt_p1Choice.setText("");
+                txt_computerChoice.setText("");
+                txt_action.setText("");
+                txt_winner.setText("");
+                txt_wins.setText("");
+                txt_draws.setText("");
+                txt_losses.setText("");
+                wins = 0;
+                draws = 0;
+                losses = 0;
 
             default:
                 break;
@@ -126,28 +147,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void rockVs() {
         switch (computerChoice) {
             case "Rock":
-                txt_action.setText("...");
-                txt_winner.setText("It's a draw!");
+                txt_action.setText(getString(R.string.drawVs));
+                txt_winner.setText(getString(R.string.draw));
+                draws = draws + 1;
+                txt_draws.setText(Integer.toString(draws));
                 break;
 
             case "Paper":
-                txt_action.setText("Paper covers Rock!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.paperVsRock));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             case "Scissors":
-                txt_action.setText("Rock crushes Scissors!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.rockVsScissors));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             case "Lizard":
-                txt_action.setText("Rock crushes Lizard!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.rockVsLizard));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             case "Spock":
-                txt_action.setText("Spock vaporizes Rock!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.rockVsSpock));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             default:
@@ -158,28 +189,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void paperVs() {
         switch (computerChoice) {
             case "Rock":
-                txt_action.setText("Paper covers Rock!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.paperVsRock));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             case "Paper":
-                txt_action.setText("...");
-                txt_winner.setText("It's a draw!");
+                txt_action.setText(getString(R.string.drawVs));
+                txt_winner.setText(getString(R.string.draw));
+                draws = draws + 1;
+                txt_draws.setText(Integer.toString(draws));
                 break;
 
             case "Scissors":
-                txt_action.setText("Scissors cuts Paper!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.paperVsScissors));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             case "Lizard":
-                txt_action.setText("Lizard eats Paper!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.paperVsLizard));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             case "Spock":
-                txt_action.setText("Paper disproves Spock!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.paperVsSpock));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             default:
@@ -190,28 +231,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void scissorsVs() {
         switch (computerChoice) {
             case "Rock":
-                txt_action.setText("Rock crushes Scissors!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.rockVsScissors));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             case "Paper":
-                txt_action.setText("Scissors cuts Paper!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.paperVsScissors));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             case "Scissors":
-                txt_action.setText("...");
-                txt_winner.setText("It's a draw!");
+                txt_action.setText(getString(R.string.drawVs));
+                txt_winner.setText(getString(R.string.draw));
+                draws = draws + 1;
+                txt_draws.setText(Integer.toString(draws));
                 break;
 
             case "Lizard":
-                txt_action.setText("Scissors decapitates Lizard!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.scissorsVsLizard));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             case "Spock":
-                txt_action.setText("Spock smashes Scissors!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.scissorsVsSpock));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             default:
@@ -222,28 +273,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void lizardVs() {
         switch (computerChoice) {
             case "Rock":
-                txt_action.setText("Rock crushes Lizard!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.rockVsLizard));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             case "Paper":
-                txt_action.setText("Lizard eats Paper!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.paperVsLizard));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             case "Scissors":
-                txt_action.setText("Scissors decapitates Lizard!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.scissorsVsLizard));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             case "Lizard":
-                txt_action.setText("...");
-                txt_winner.setText("It's a draw!");
+                txt_action.setText(getString(R.string.drawVs));
+                txt_winner.setText(getString(R.string.draw));
+                draws = draws + 1;
+                txt_draws.setText(Integer.toString(draws));
                 break;
 
             case "Spock":
-                txt_action.setText("Lizard poisons Spock!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.lizardVsSpock));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             default:
@@ -254,28 +315,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void spockVs() {
         switch (computerChoice) {
             case "Rock":
-                txt_action.setText("Spock vaporizes Rock!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.rockVsSpock));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             case "Paper":
-                txt_action.setText("Paper disproves Spock!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.paperVsSpock));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             case "Scissors":
-                txt_action.setText("Spock smashes Scissors!");
-                txt_winner.setText("Player 1 wins!");
+                txt_action.setText(getString(R.string.scissorsVsSpock));
+                txt_winner.setText(getString(R.string.win));
+                wins = wins + 1;
+                txt_wins.setText(Integer.toString(wins));
                 break;
 
             case "Lizard":
-                txt_action.setText("Lizard poisons Spock!");
-                txt_winner.setText("Computer wins!");
+                txt_action.setText(getString(R.string.lizardVsSpock));
+                txt_winner.setText(getString(R.string.lose));
+                losses = losses + 1;
+                txt_losses.setText(Integer.toString(losses));
                 break;
 
             case "Spock":
-                txt_action.setText("...");
-                txt_winner.setText("It's a draw!");
+                txt_action.setText(getString(R.string.drawVs));
+                txt_winner.setText(getString(R.string.draw));
+                draws = draws + 1;
+                txt_draws.setText(Integer.toString(draws));
                 break;
 
             default:

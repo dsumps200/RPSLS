@@ -8,4 +8,22 @@
     <string name="select_option">Select option:</string>
     <string name="p1">Player 1: </string>
     <string name="computer">Computer: </string>
+    <string name="wins">Wins:</string>
+    <string name="draws">Draws:</string>
+    <string name="losses">Losses:</string>
+    <string name="draw">It\'s a draw!</string>
+    <string name="drawVs">...</string>
+    <string name="paperVsRock">Paper covers Rock!</string>
+    <string name="rockVsScissors">Rock crushes Scissors!</string>
+    <string name="rockVsLizard">Rock crushes Lizard!</string>
+    <string name="rockVsSpock">Spock vaporizes Rock!</string>
+    <string name="paperVsScissors">Scissors cuts Paper!</string>
+    <string name="paperVsLizard">Lizard eats Paper!</string>
+    <string name="paperVsSpock">Paper disproves Spock!</string>
+    <string name="scissorsVsLizard">Scissors decapitates Lizard!</string>
+    <string name="scissorsVsSpock">Spock smashes Scissors!</string>
+    <string name="lizardVsSpock">Lizard poisons Spock!</string>
+    <string name="lose">Computer wins!</string>
+    <string name="win">Player 1 wins!</string>
+    <string name="reset">Reset</string>
 </resources>
