@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">RPSLS Application</string>
+    <string name="rock">Rock</string>
+    <string name="paper">Paper</string>
+    <string name="scissors">Scissors</string>
+    <string name="lizard">Lizard</string>
+    <string name="spock">Spock</string>
 </resources>
