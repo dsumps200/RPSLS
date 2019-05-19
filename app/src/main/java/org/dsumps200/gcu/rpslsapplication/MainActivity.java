@@ -60,24 +60,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 p1Choice = options.get(1);
                 txt_p1Choice.setText(p1Choice);
                 generateComputerChoice();
+                calculateAction();
                 break;
 
             case R.id.btn_scissors:
                 p1Choice = options.get(2);
                 txt_p1Choice.setText(p1Choice);
                 generateComputerChoice();
+                calculateAction();
                 break;
 
             case R.id.btn_lizard:
                 p1Choice = options.get(3);
                 txt_p1Choice.setText(p1Choice);
                 generateComputerChoice();
+                calculateAction();
                 break;
 
             case R.id.btn_spock:
                 p1Choice = options.get(4);
                 txt_p1Choice.setText(p1Choice);
                 generateComputerChoice();
+                calculateAction();
                 break;
 
             default:
@@ -98,15 +102,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case "Paper":
+                paperVs();
                 break;
 
             case "Scissors":
+                scissorsVs();
                 break;
 
             case "Lizard":
+                lizardVs();
                 break;
 
             case "Spock":
+                spockVs();
                 break;
 
             default:
@@ -146,4 +154,133 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+    private void paperVs() {
+        switch (computerChoice) {
+            case "Rock":
+                txt_action.setText("Paper covers Rock!");
+                txt_winner.setText("Player 1 wins!");
+                break;
+
+            case "Paper":
+                txt_action.setText("...");
+                txt_winner.setText("It's a draw!");
+                break;
+
+            case "Scissors":
+                txt_action.setText("Scissors cuts Paper!");
+                txt_winner.setText("Computer wins!");
+                break;
+
+            case "Lizard":
+                txt_action.setText("Lizard eats Paper!");
+                txt_winner.setText("Computer wins!");
+                break;
+
+            case "Spock":
+                txt_action.setText("Paper disproves Spock!");
+                txt_winner.setText("Player 1 wins!");
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void scissorsVs() {
+        switch (computerChoice) {
+            case "Rock":
+                txt_action.setText("Rock crushes Scissors!");
+                txt_winner.setText("Computer wins!");
+                break;
+
+            case "Paper":
+                txt_action.setText("Scissors cuts Paper!");
+                txt_winner.setText("Player 1 wins!");
+                break;
+
+            case "Scissors":
+                txt_action.setText("...");
+                txt_winner.setText("It's a draw!");
+                break;
+
+            case "Lizard":
+                txt_action.setText("Scissors decapitates Lizard!");
+                txt_winner.setText("Player 1 wins!");
+                break;
+
+            case "Spock":
+                txt_action.setText("Spock smashes Scissors!");
+                txt_winner.setText("Computer wins!");
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void lizardVs() {
+        switch (computerChoice) {
+            case "Rock":
+                txt_action.setText("Rock crushes Lizard!");
+                txt_winner.setText("Computer wins!");
+                break;
+
+            case "Paper":
+                txt_action.setText("Lizard eats Paper!");
+                txt_winner.setText("Player 1 wins!");
+                break;
+
+            case "Scissors":
+                txt_action.setText("Scissors decapitates Lizard!");
+                txt_winner.setText("Computer wins!");
+                break;
+
+            case "Lizard":
+                txt_action.setText("...");
+                txt_winner.setText("It's a draw!");
+                break;
+
+            case "Spock":
+                txt_action.setText("Lizard poisons Spock!");
+                txt_winner.setText("Player 1 wins!");
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void spockVs() {
+        switch (computerChoice) {
+            case "Rock":
+                txt_action.setText("Spock vaporizes Rock!");
+                txt_winner.setText("Player 1 wins!");
+                break;
+
+            case "Paper":
+                txt_action.setText("Paper disproves Spock!");
+                txt_winner.setText("Computer wins!");
+                break;
+
+            case "Scissors":
+                txt_action.setText("Spock smashes Scissors!");
+                txt_winner.setText("Player 1 wins!");
+                break;
+
+            case "Lizard":
+                txt_action.setText("Lizard poisons Spock!");
+                txt_winner.setText("Computer wins!");
+                break;
+
+            case "Spock":
+                txt_action.setText("...");
+                txt_winner.setText("It's a draw!");
+                break;
+
+            default:
+                break;
+        }
+    }
+
 }
